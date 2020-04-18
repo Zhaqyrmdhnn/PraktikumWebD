@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>calculator</title>
+		<script>
+			// function insert(num){
+				// 	document.form.text.value = document.form.text.value+num;
+			// }
+			// function hasil(){
+				// 	var angka= document.form.text.value;
+				// 	if (angka) {
+					// 		document.form.text.value = eval(angka);
+				// 	}
+			// }
+			// function clean(){
+				// 	document.form.text.value =""
+			// }
+
+		var bil1;
+		var bil2;
+		var hasil;
+		var opr;
+		var opr_seleksi = false;
+		function insert(angka) {
+		var display = document.form.text.value;
+		if (display == "0") {
+			display = angka;
+		} else {
+			display += angka;
+		}
+		document.form.text.value = display;
+		}
+
+		function clr() {
+		document.form.text.value = "0";
+		bil1 = 0;
+		bil2 = 0;
+		opr_seleksi = false;
+		}
+		function koma() {
+		var display = document.form.text.value;
+		if (display.includes(".") == false) {
+			display += ".";
+		}
+			document.form.text.value = display;
+		}
+
+		function btn_opr(o) {
+		opr_seleksi = true;
+		bil1 = parseFloat(document.form.text.value);
+		opr = o;
+		document.form.text.value= "0";
+		}
+		function del(){
+				var angka= document.form.text.value;
+				document.form.text.value = angka.substring(0,angka.length-1);
+			}
+
+		function hitung() {
+		if (opr_seleksi == true) {
+			bil2 = parseFloat(document.form.text.value);
+			switch(opr){
+				case 1 :
+					hasil = bil1 / bil2;
+								document.form.text.value = hasil;
+					break;
+				case 2 :
+					hasil = bil1 * bil2;
+					document.form.text.value = hasil;
+					break;
+				case 3 :
+					hasil = bil1 - bil2;
+					document.form.text.value = hasil;
+					break;
+				case 4 :
+					hasil = bil1 + bil2;
+					document.form.text.value = hasil;
+					break;
+			}
+			opr_seleksi = false
+			hasil = 0;
+			bil1 = 0;
+			bil2 = 0;
+		}
+		}
+		</script>
+		<style>
+			* {
+				margin:0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			.warna1{
+				background: #f79f00;
+			}
+			.warna2{
+				background: #9e9e9e;
+			}
+			.warna3{
+				background: #607d8b;
+			}
+			.btn{
+				width: 50px;
+				height:  50px;
+				font-size: 25pt;
+				margin: 2px;
+				cursor: pointer;
+				border: none;
+				color: white;
+			}
+			.btn1{
+				width: 100px;
+				height:  50px;
+				font-size: 25pt;
+				margin: 2px;
+				border: none;
+				color: white;
+			}
+			.text{
+				width: 217px;
+				margin: 5px;
+				font-size: 25pt;
+				padding: 5;
+				color: #607d8b;
+				border: none;
+
+			}
+			.title{
+				position: absolute;
+				top: 30%;
+			left: 30%;
+				color: white;
+				text-align: center;
+				font-size: 20pt;
+				font-family: sans-serif;
+			}
+			.main{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translateX(130%) translateY(-50%);
+			}
+			.bg{
+				background: linear-gradient(to right, #e91e63, #3f51b5);
+				height: 1000px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bg"></div>
+		<div class="title">
+			<h1>Kalkulator JS</h1>
+			<h2>Winda Rianty</h2>
+			<h2>1708561085</h2>
+		</div>
+		<div class="main">
+			<form action="" name="form">
+				<input type="text" class="text" disabled="" name="text" value="0">
+			</form>
+			<table>
+				<tr>
+					<td><input class="btn warna2" type="button" value="C" onclick="clr()"></td>
+					<td><input class="btn warna2" type="button" value="CE" onclick="del()"></td>
+					<td><input class="btn warna2" type="button" value="%"></td>
+					<td><input class="btn warna1" type="button" value="/" onclick="btn_opr(1)"></td>
+				</tr>
+				<tr>
+					<td><input class="btn warna3" type="button" value="7" onclick="insert(7)"></td>
+					<td><input class="btn warna3" type="button" value="8" onclick="insert(8)"></td>
+					<td><input class="btn warna3" type="button" value="9" onclick="insert(9)"></td>
+					<td><input class="btn warna1" type="button" value="x" onclick="btn_opr(2)"></td>
+				</tr>
+				<tr>
+					<td><input class="btn warna3" type="button" value="4" onclick="insert(4)"></td>
+					<td><input class="btn warna3" type="button" value="5" onclick="insert(5)"></td>
+					<td><input class="btn warna3" type="button" value="6" onclick="insert(6)"></td>
+					<td><input class="btn warna1" type="button" value="-" onclick="btn_opr(3)"></td>
+				</tr>
+				<tr>
+					<td><input class="btn warna3" type="button" value="1" onclick="insert(1)"></td>
+					<td><input class="btn warna3" type="button" value="2" onclick="insert(2)"></td>
+					<td><input class="btn warna3" type="button" value="3" onclick="insert(3)"></td>
+					<td><input class="btn warna1" type="button" value="+" onclick="btn_opr(4)"></td>
+				</tr><tr>
+				<td colspan="2"><input class="btn1 warna3" type="button" value=0 onclick="insert(0)"></td>
+				<td><input class="btn warna3" type="button" value="." onclick="koma()"></td>
+				<td><input class="btn warna1" type="button" value="=" onclick="hitung()"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html> 
