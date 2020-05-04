@@ -40,7 +40,7 @@ CREATE TABLE `tb_biodata` (
 --
 
 INSERT INTO `tb_biodata` (`nama`, `nim`, `email`, `alamat`) VALUES
-('Kadek Andika', 1708561078, 'dexandika19@gmail.com', 'Jalan Sahadewa No. 15');
+('Zhaqy Hikkammi', 1708561074, 'gulamrmd25@@gmail.com', 'Jalan Taman Ambengan No. 9a');
 
 --
 -- Indexes for dumped tables
